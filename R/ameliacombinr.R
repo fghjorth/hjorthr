@@ -1,12 +1,14 @@
 #'
 #' Combine multiple imputations for a list of regression models
 #'
-#' This function lets you input a list of regression models and retrieve coefficients and standard errors based on a combination of imputed data sets.
+#' This function lets you input a list of regression models and retrieve coefficients and standard errors based on a combination of imputed data sets..
 #'
 #' @param modellist A list of regression models, entered as formulas
 #' @param aout The output from the amelia() function
 #' @param subsets A list of numeric or logical vectors, one for each model, for running the model on a subset of the data
+#'
 #' @keywords amelia imputation regression
+#'
 #' @examples
 #' mtcarsmiss<-mtcars
 #' mtcarsmiss$wt[c(5,10,15)]<-NA #create missing values
@@ -16,6 +18,8 @@
 #' m2f<-as.formula(mpg~wt+cyl) #formula for model 2
 #' require(hjorthr)
 #' #ameliacombinr(modellist=list(m1f,m2f),aout=mtcarsmiss_im)
+#'
+#' @export
 
 ameliacombinr<-function(modellist,aout,subsets=as.list(rep(NA,length(modellist)))){
   imputed<-list(coefs=as.list(rep(NA,length(modellist))),ses=as.list(rep(NA,length(modellist))))

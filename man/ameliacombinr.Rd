@@ -14,7 +14,7 @@ ameliacombinr(modellist, aout, subsets = as.list(rep(NA, length(modellist))))
 \item{subsets}{A list of numeric or logical vectors, one for each model, for running the model on a subset of the data}
 }
 \description{
-This function lets you input a list of regression models and retrieve coefficients and standard errors based on a combination of imputed data sets.
+This function lets you input a list of regression models and retrieve coefficients and standard errors based on a combination of imputed data sets..
 }
 \examples{
 mtcarsmiss<-mtcars
@@ -25,6 +25,7 @@ m1f<-as.formula(mpg~wt) #formula for model 1
 m2f<-as.formula(mpg~wt+cyl) #formula for model 2
 require(hjorthr)
 #ameliacombinr(modellist=list(m1f,m2f),aout=mtcarsmiss_im)
+
 }
 \keyword{amelia}
 \keyword{imputation}
