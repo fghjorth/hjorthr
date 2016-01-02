@@ -4,7 +4,7 @@
 #'  This function lets you easily create a plot of marginal effects from a regression interaction model..
 #'
 #'  @param model A regression model object, e.g. model1
-#'  @param xterm The term for which to plot effects on y, as character
+#'  @param xterm The term forr which to plot effects on y, as character
 #'  @param zterm The term along which to plot effects of x on y
 #'  @param zseq Sequence of values of z for which to plot the marginal effect of x
 #'  @examples
