@@ -24,7 +24,7 @@ mtcarsmiss_im<-amelia(mtcarsmiss) #run multiple imputations
 m1f<-as.formula(mpg~wt) #formula for model 1
 m2f<-as.formula(mpg~wt+cyl) #formula for model 2
 require(hjorthr)
-ameliacombinr(modellist=list(m1f,m2f),aout=mtcarsmiss_im)
+#ameliacombinr(modellist=list(m1f,m2f),aout=mtcarsmiss_im)
 }
 \keyword{amelia}
 \keyword{imputation}

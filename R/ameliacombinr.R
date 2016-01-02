@@ -15,7 +15,7 @@
 #' m1f<-as.formula(mpg~wt) #formula for model 1
 #' m2f<-as.formula(mpg~wt+cyl) #formula for model 2
 #' require(hjorthr)
-#' ameliacombinr(modellist=list(m1f,m2f),aout=mtcarsmiss_im)
+#' #ameliacombinr(modellist=list(m1f,m2f),aout=mtcarsmiss_im)
 
 ameliacombinr<-function(modellist,aout,subsets=as.list(rep(NA,length(modellist)))){
   imputed<-list(coefs=as.list(rep(NA,length(modellist))),ses=as.list(rep(NA,length(modellist))))
