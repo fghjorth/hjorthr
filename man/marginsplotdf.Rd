@@ -7,7 +7,7 @@
 marginsplotdf(model, xterm, zterm, zseq)
 }
 \description{
-This function lets you easily create a plot of marginal effects from a regression interaction model
+This function lets you easily create a plot of marginal effects from a regression interaction model.
 }
 \details{
 @param model A regression model object, e.g. model1

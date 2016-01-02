@@ -1,7 +1,7 @@
 #'
 #'  Function for creating data for marginsplot
 #'
-#'  This function lets you easily create a plot of marginal effects from a regression interaction model
+#'  This function lets you easily create a plot of marginal effects from a regression interaction model.
 #'
 #'  @param model A regression model object, e.g. model1
 #'  @param xterm The term for which to plot effects on y, as character
