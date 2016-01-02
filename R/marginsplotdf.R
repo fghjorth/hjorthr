@@ -8,7 +8,6 @@
 #'  @param zterm The term along which to plot effects of x on y
 #'  @param zseq Sequence of values of z for which to plot the marginal effect of x
 #'  @keywords margins
-#'  @export
 #'  @examples
 #'  m1<-lm(mpg~cyl*wt,data=mtcars)
 #'  require(hjorthr)
