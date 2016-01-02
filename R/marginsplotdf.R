@@ -8,7 +8,7 @@
 #'  @param zterm The term along which to plot effects of x on y
 #'  @param zseq Sequence of values of z for which to plot the marginal effect of x
 #'
-#'  @return A data frame
+#'  @export
 #'
 #'  @examples
 #'  m1<-lm(mpg~cyl*wt,data=mtcars)
@@ -19,8 +19,7 @@
 #'  ggplot(mdf,aes(x=z,y=dydx,ymin=dydx-1.96*se,ymax=dydx+1.96*se)) +
 #'    geom_line() +
 #'    geom_ribbon(alpha=.2)
-#'
-#'  @export
+
 
 
 marginsplotdf<-function(model, xterm, zterm, zseq){
