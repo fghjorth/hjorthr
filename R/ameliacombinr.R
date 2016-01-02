@@ -1,27 +1,37 @@
+#'
 #' Combine multiple imputations for a list of regression models
 #'
 #' This function lets you input a list of regression models and retrieve coefficients and standard errors based on a combination of imputed data sets.
+#'
 #' @param modellist A list of regression models, entered as formulas
 #' @param aout The output from the amelia() function
 #' @param subsets A list of numeric or logical vectors, one for each model, for running the model on a subset of the data
 #' @keywords amelia imputation regression
-#' @examples TK!
-#' ameliacombinr()
+#' @examples
+#' mtcarsmiss<-mtcars
+#' mtcarsmiss$wt[c(5,10,15)]<-NA #create missing values
+#' require(Amelia)
+#' mtcarsmiss_im<-amelia(mtcarsmiss) #run multiple imputations
+#' m1f<-as.formula(mpg~wt) #formula for model 1
+#' m2f<-as.formula(mpg~wt+cyl) #formula for model 2
+#' require(hjorthr)
+#' ameliacombinr(modellist=list(m1f,m2f),aout=mtcarsmiss_im)
 
 ameliacombinr<-function(modellist,aout,subsets=as.list(rep(NA,length(modellist)))){
   imputed<-list(coefs=as.list(rep(NA,length(modellist))),ses=as.list(rep(NA,length(modellist))))
   for (j in 1:length(modellist)){
 
     #get names of coefs in model
+    require(broom)
     modelcoefs<-tidy(lm(modellist[[j]],data=aout$imputations[[1]]))[,1]
 
     #matrices for storing results for each imputation
-    imp_coefs<-matrix(NA,nrow=impsm,ncol=length(modelcoefs))
-    imp_ses<-matrix(NA,nrow=impsm,ncol=length(modelcoefs))
+    imp_coefs<-matrix(NA,nrow=aout$m,ncol=length(modelcoefs))
+    imp_ses<-matrix(NA,nrow=aout$m,ncol=length(modelcoefs))
 
     for (i in 1:aout$m){
       if (is.na(subsets[[j]])){
-        imp_model<-lm(modellist[[j]],data=el.am$imputations[[i]])
+        imp_model<-lm(modellist[[j]],data=aout$imputations[[i]])
       } else imp_model<-lm(modellist[[j]],data=el.am$imputations[[i]][subsets[[j]],])
       imp_coefs[i,]<-tidy(imp_model)[,2]
       imp_ses[i,]<-tidy(imp_model)[,3]

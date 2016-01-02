@@ -1,5 +1,8 @@
+#'
 #'  Function for creating data for marginsplot
+#'
 #'  This function lets you easily create a plot of marginal effects from a regression interaction model
+#'
 #'  @param model A regression model object, e.g. model1
 #'  @param xterm The term for which to plot effects on y, as character
 #'  @param zterm The term along which to plot effects of x on y
@@ -7,7 +10,15 @@
 #'  @keywords margins
 #'  @export
 #'  @examples
-#'  marginsplotdf()
+#'  m1<-lm(mpg~cyl*wt,data=mtcars)
+#'  require(hjorthr)
+#'  mdf<-marginsplotdf(m1,"wt","cyl",seq(from=min(mtcars$cyl),to=max(mtcars$cyl),by=.5))
+#'
+#'  require(ggplot2)
+#'  ggplot(mdf,aes(x=z,y=dydx,ymin=dydx-1.96*se,ymax=dydx+1.96*se)) +
+#'    geom_line() +
+#'    geom_ribbon(alpha=.2)
+
 
 marginsplotdf<-function(model, xterm, zterm, zseq){
   coefs<-coef(model)
@@ -31,3 +42,4 @@ marginsplotdf<-function(model, xterm, zterm, zseq){
 #   geom_smooth(aes(ymin=dydx-t90*se,ymax=dydx+t90*se),stat="identity",alpha=.3,color="black") +
 #   geom_smooth(aes(ymin=dydx-t95*se,ymax=dydx+t95*se),stat="identity",alpha=.2,linetype=0) +
 #   theme_bw()
+
